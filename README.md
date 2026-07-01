@@ -16,6 +16,21 @@ The same GBIE JSON representation is used throughout the pipeline, so prediction
 
 **IMPORTANT!** Run commands from the repository root. In this way relative paths should work as intended. If you encounter runtime problems related to paths, try to include in the problematic bash script a first line `$ cd <path_to_your_project_root>`
 
+## Reference
+
+If you use this code in your work, please kindly cite the following paper:
+
+```bibtex
+@inproceedings{martinelli_etal-2026,
+    title={{TWIX: a Two-Stage Approach for End-To-End Named Entity Recognition and Relation Extraction}},
+    author={Martinelli, Marco and Menotti, Laura},
+    booktitle = {Working Notes of CLEF 2026 -- Conference and Labs of the Evaluation Forum, CEUR Workshop Proceedings},
+    editor = {Sanchez Salido, Eva and Barrón-Cedeño, Alberto and Seco de Herrera, Alba García and MacAvaney, Sean and Struß, Julia Maria},
+    year={2026},
+    organization={CEUR-WS},
+}
+```
+
 ## 1. Environment setup
 
 The launchers are Bash scripts. Use Linux, macOS, WSL, or Git Bash.
