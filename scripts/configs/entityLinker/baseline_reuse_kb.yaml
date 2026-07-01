@@ -1,0 +1,30 @@
+# run_baseline_entity_linker.py configuration for baseline entity linking
+#
+# Mode: Reuse a previously saved knowledge base and embedding index, then run
+# inference with a stricter semantic-similarity threshold.
+#
+# Usage:
+#   python run_baseline_entity_linker.py --config scripts/configs/entityLinker/baseline_reuse_kb.yaml
+
+mode: inference
+
+linker:
+  # Must point to a knowledge base produced by baseline_build_inference.yaml.
+  knowledge_base_dir: "runs/entityLinker/baseline/kb"
+
+  # Not required when knowledge_base_dir exists; left null to make the reuse path explicit.
+  training_data_paths: null
+  uri_definitions_path: null
+  id_to_uri_path: null
+
+  inference_data_path: "data/Annotations/Dev/json_format/dev.json"
+  inference_output_path: "runs/entityLinker/baseline/predictions_dev_threshold_035.json"
+  eval_data_path: "data/Annotations/Dev/json_format/dev.json"
+
+  # This must match the index path used when the knowledge base was built.
+  embeddings_model_name: "neuml/pubmedbert-base-embeddings"
+  embeddings_index_path: "runs/entityLinker/baseline/embeddings_index"
+
+  similarity_top_k: 10
+  similarity_threshold: 0.35
+  use_label_for_exact_match: true

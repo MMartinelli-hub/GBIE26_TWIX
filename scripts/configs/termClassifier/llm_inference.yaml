@@ -1,0 +1,30 @@
+classifier: llm
+
+llm:
+  # Provider identity
+  provider: lmstudio
+  model: medgemma-4b-it-mlx
+
+  # Provider credentials / endpoints
+  api_key: null
+  base_url: null
+  azure_endpoint: null
+  azure_api_version: "2024-02-01"
+
+  # Data
+  inference_data_path: data/Annotations/Dev/json_format/dev.json
+  inference_output_path: runs/termClassifier/llm_medgemma-4b-it-mlx_dev_predictions.json
+  prompts_path: src/termClassifier/prompts.json
+  checkpoint_path: checkpoints/termClassifier/llm_medgemma-4b-it-mlx_dev_inference_checkpoint.json
+
+  # Prompt selection
+  system_prompt_key: base
+  user_prompt_key: base
+
+  # Generation
+  temperature: 0.0
+  max_new_tokens: 512
+
+  # Local inference option
+  device: null
+  raw: false

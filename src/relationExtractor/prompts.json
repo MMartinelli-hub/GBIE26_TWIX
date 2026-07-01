@@ -1,0 +1,8 @@
+{
+    "system_prompts": {
+        "base": "You are a biomedical relation extraction assistant. Predict the relationship between two marked entities and output exactly one allowed predicate, with no explanation or extra text."
+    },
+    "user_prompts": {
+        "base": "You are given a biomedical text containing exactly two marked entities: a subject entity delimited by [E1] and [/E1], and an object entity delimited by [E2] and [/E2].\n\nYour task is to predict the relation between these two entities by assigning exactly one of the following predicates:\n\n- administered\n- affect\n- change abundance\n- change effect\n- change expression\n- compared to\n- impact\n- influence\n- interact\n- is a\n- is linked to\n- located in\n- part of\n- produced by\n- strike\n- target\n- used by\n\nIf none of these predicates describes the relation or if no relation exists between the entities, assign:\nNA\n\nInstructions:\n- Determine the relation between the entity marked by [E1] / [/E1] (subject) and the entity marked by [E2] / [/E2] (object).\n- Use the surrounding text as context.\n- Consider the structural constraints: not all entity type combinations are valid relations.\n- Output exactly one predicate.\n- Output nothing except the chosen predicate.\n\nText:\n{text}\n"
+    }
+}

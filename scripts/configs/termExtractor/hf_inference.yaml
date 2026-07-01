@@ -1,0 +1,16 @@
+extractor: hf
+mode: inference
+
+hf:
+  model_path: checkpoints/termExtractor/hf_biolinkbert
+  inference_data_path: data/Annotations/Dev/json_format/dev.json
+  inference_output_path: runs/termExtractor/hf_biolinkbert_dev_predictions.json
+  #eval_data_path: data/Annotations/Dev/json_format/dev.json
+
+  batch_size: 16
+  max_length: 512
+  seed: 42
+  num_workers: 0
+  use_amp: false
+
+  separate_title_abstract: false

@@ -1,0 +1,17 @@
+recognizer: gliner
+mode: inference
+
+gliner:
+  # Data
+  inference_data_path: data/Annotations/Dev/json_format/dev.json
+  inference_output_path: runs/entityRecognizer/gliner_nunerzero_dev_predictions.json
+  eval_data_path: null
+
+  # Model
+  model_path: checkpoints/entityRecognizer/gliner_nunerzero
+
+  # Inference hyper-parameters
+  threshold: 0.5
+
+  # Other
+  seed: 42

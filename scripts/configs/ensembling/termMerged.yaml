@@ -1,0 +1,10 @@
+prediction_folder: runs/termMerged/selected
+prediction_glob: "*.json"      # optional, defaults to *.json
+#methods: [majority, intersection, union]
+methods: [majority]
+
+# optional bounds; defaults are 2..all discovered files
+min_combination_size: 2
+max_combination_size: 10
+
+output_id: merged_ensemble

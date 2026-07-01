@@ -1,0 +1,63 @@
+# run_entity_linker.py configuration for entity linking inference on GBIE format
+#
+# Mode: Inference with pre-trained retriever and optional reranker
+#
+# This config runs the full entity linking pipeline on inference data.
+# Supports both retriever-only and retriever+reranker configurations.
+#
+# Usage:
+#     python run_entity_linker.py --config scripts/configs/entityLinker/inference.yaml
+#     python run_entity_linker.py --config scripts/configs/entityLinker/inference.yaml --override linker.reranker_id=null
+
+mode: inference
+
+linker:
+  # Entity dictionary (JSONL format with concept definitions)
+  entity_dict_path: "data/Concepts/uri_retrieved_definitions_el_format.jsonl"
+
+  # Retriever selection (one of: bm25, prior, textembedding, e5bm25, dualencoder)
+  retriever_id: textembedding
+
+  # Optional reranker (one of: crossencoder, chatel, fevry, extend, fusioned)
+  # Set to null to run retrieval-only inference
+  #reranker_id: crossencoder
+  reranker_id: null
+
+  # Pre-trained retriever checkpoint path
+  retriever_model_name_or_path: "runs/entityLinker/retriever_checkpoint_retriever=textembedding_retriever_model=michiyasunaga__BioLinkBERT-base"
+
+  # Pre-trained reranker checkpoint path (only used if reranker_id is set)
+  reranker_model_name_or_path: "runs/entityLinker/retriever_reranker_checkpoint"
+
+  # Optional YAML config files for retriever and reranker (from entity-linkings library)
+  retriever_config: null
+
+  # Pre-built retriever index directory (optional, speeds up inference)
+  retriever_index_dir: "runs/entityLinker/retriever_checkpoint_retriever=textembedding_retriever_model=michiyasunaga__BioLinkBERT-base"
+
+  # Inference data path (GBIE JSON format with entity spans from NER)
+  inference_data_path: "data/Annotations/Dev/json_format/dev.json"
+
+  # Output path for predictions (GBIE JSON format with predicted URIs)
+  inference_output_path: "runs/entityLinker/predictions_dev.json"
+
+  # Optional ground-truth data for evaluation (GBIE JSON format)
+  # When provided, strict (span + URI) and lenient (span-only) metrics are printed
+  #eval_data_path: "data/Annotations/Dev/json_format/dev.json"
+
+  # Number of candidates to retrieve/rerank
+  num_candidates: 10
+
+  # HuggingFace datasets cache directory (optional)
+  cache_dir: null
+
+  # Random seed for reproducibility
+  seed: 42
+
+  # Training-only parameters (not used for inference, set to null/false)
+  num_train_epochs: null
+  train_batch_size: null
+  eval_batch_size: null
+  gradient_accumulation_steps: null
+  num_hard_negatives: null
+  remove_nil: false

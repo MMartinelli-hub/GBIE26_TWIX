@@ -1,0 +1,19 @@
+python atlop_interface.py --data_dir ./data \
+--transformer_type roberta \
+--model_name_or_path roberta-large \
+--train_file train_annotated_g.json \
+--load_path outputs/pretrain_sb10 \
+--finetune \
+--save_path outputs/finetune_g100_sb10 \
+--dev_file dev.json \
+--test_file dev.json \
+--train_batch_size 4 \
+--test_batch_size 8 \
+--gradient_accumulation_steps 1 \
+--num_labels 1 \
+--learning_rate 5e-5 \
+--max_grad_norm 1.0 \
+--warmup_ratio 0.06 \
+--num_train_epochs 100.0 \
+--seed 66 \
+--num_class 18

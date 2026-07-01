@@ -1,0 +1,20 @@
+recognizer: hf
+mode: inference
+
+hf:
+  # Data
+  inference_data_path: data/Annotations/Dev/json_format/dev.json
+  inference_output_path: runs/entityRecognizer/hf_biolinkbert_dev_predictions.json
+
+  # Model
+  model_path: checkpoints/entityRecognizer/hf_biolinkbert
+
+  # Inference/runtime settings
+  batch_size: 16
+  max_length: 512
+  seed: 42
+  num_workers: 0
+  use_amp: false
+
+  # Text handling
+  separate_title_abstract: false

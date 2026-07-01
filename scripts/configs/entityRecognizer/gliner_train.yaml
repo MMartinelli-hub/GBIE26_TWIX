@@ -1,0 +1,33 @@
+recognizer: gliner
+mode: train
+
+gliner:
+  # Data
+  train_data_paths:
+    - data/Annotations/Train/platinum_quality/json_format/train_platinum.json
+    - data/Annotations/Train/gold_quality/json_format/train_gold.json
+    - data/Annotations/Train/silver_quality/json_format/train_silver.json
+  dev_data_path: data/Annotations/Dev/json_format/dev.json
+
+  # Model
+  model_name: numind/NuNerZero
+  output_dir: checkpoints/entityRecognizer/gliner_nunerzero
+  save_directory: scripts/logs/entityRecognizer/gliner_nunerzero
+
+  # Training hyper-parameters
+  num_steps: 3000
+  eval_every: 200
+  batch_size: 8
+  max_len: 384
+  warmup_ratio: 0.1
+  lr_encoder: 1.0e-5
+  lr_others: 5.0e-5
+  freeze_token_rep: false
+  max_types: 15
+  no_shuffle_types: false
+  no_random_drop: false
+  max_neg_type_ratio: 1.0
+
+  # Other
+  seed: 42
+  separate_title_abstract: false

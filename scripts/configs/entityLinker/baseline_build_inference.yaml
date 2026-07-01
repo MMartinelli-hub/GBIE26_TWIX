@@ -1,0 +1,44 @@
+# run_baseline_entity_linker.py configuration for baseline entity linking
+#
+# Mode: Build the exact-match + semantic-similarity knowledge base, save it,
+# then run inference.
+#
+# Usage:
+#   python run_baseline_entity_linker.py --config scripts/configs/entityLinker/baseline_build_inference.yaml
+
+mode: build_and_inference
+
+linker:
+  # Directory where exact-match dictionaries are saved for reuse.
+  # If this directory already exists, the runner loads it instead of rebuilding.
+  knowledge_base_dir: "runs/entityLinker/baseline/kb"
+
+  # GBIE-format training annotations used to build exact mention -> URI mappings.
+  training_data_paths:
+    - "data/Annotations/Train/platinum_quality/json_format/train_platinum.json"
+    - "data/Annotations/Train/gold_quality/json_format/train_gold.json"
+    - "data/Annotations/Train/silver_quality/json_format/train_silver.json"
+
+  # Definition files used for semantic-similarity fallback.
+  uri_definitions_path: "data/Concepts/split_uri_definitions.json"
+  id_to_uri_path: "data/Concepts/id_to_uri.json"
+
+  # GBIE-format input containing entity spans to link.
+  inference_data_path: "data/Annotations/Dev/json_format/dev.json"
+
+  # Output with predicted uri and uri_source fields added to each entity.
+  inference_output_path: "runs/entityLinker/baseline/predictions_dev.json"
+
+  # Optional gold file for strict span+URI and span-only evaluation.
+  #eval_data_path: "data/Annotations/Dev/json_format/dev.json"
+
+  # txtai / embedding index settings.
+  embeddings_model_name: "neuml/pubmedbert-base-embeddings"
+  embeddings_index_path: "runs/entityLinker/baseline/embeddings_index"
+
+  # Similarity fallback settings.
+  similarity_top_k: 10
+  similarity_threshold: 0.0
+
+  # When true, exact matching first tries (text_span, label), then text_span only.
+  use_label_for_exact_match: true

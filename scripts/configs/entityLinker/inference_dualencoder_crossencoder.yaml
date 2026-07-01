@@ -1,0 +1,63 @@
+# run_entity_linker.py configuration for entity linking inference on GBIE format
+#
+# Mode: Inference with a pre-trained DUALENCODER retriever + CROSSENCODER reranker
+#
+# This config file uses the entity-linkings library and is adapted for GBIE format data.
+# The 'linker' section contains parameters passed to ELEntityLinker.
+#
+# Usage:
+#     python run_entity_linker.py --config scripts/configs/entityLinker/infer_dualencoder_crossencoder.yaml
+
+mode: inference
+
+linker:
+  # Entity dictionary (JSONL format with concept definitions)
+  entity_dict_path: "data/Concepts/uri_retrieved_definitions_el_format.jsonl"
+
+  # Retriever selection (one of: bm25, prior, textembedding, e5bm25, dualencoder)
+  retriever_id: dualencoder
+
+  # Optional reranker (one of: crossencoder, chatel, fevry, extend, fusioned)
+  # Set to null to run retrieval-only
+  reranker_id: crossencoder
+
+  # Pre-trained retriever checkpoint (HuggingFace model hub ID or local path)
+  retriever_model_name_or_path: "runs/entityLinker/dualencoder_train"
+
+  # Pre-trained reranker checkpoint (HuggingFace model hub ID or local path)
+  reranker_model_name_or_path: "runs/entityLinker/dualencoder_train"
+
+  # Optional YAML config files for retriever and reranker (from entity-linkings library)
+  retriever_config: null
+  reranker_config: null
+
+  # Pre-built retriever index directory (optional, for faster inference)
+  # When null, the index is built from scratch during inference
+  retriever_index_dir: "runs/entityLinker/dualencoder_train"
+
+  # Inference data path (GBIE JSON format with entity spans from NER)
+  inference_data_path: "data/Annotations/Dev/json_format/dev.json"
+
+  # Output path for predictions (GBIE JSON format with predicted URIs)
+  inference_output_path: "runs/entityLinker/dualencoder_crossencoder_predictions.json"
+
+  # Optional ground-truth data for evaluation (GBIE JSON format)
+  # When provided, strict (span + URI) and lenient (span-only) metrics are printed
+  eval_data_path: "data/Annotations/Dev/json_format/dev.json"
+
+  # Retriever/reranker inference: top-k candidates to retrieve or rerank
+  num_candidates: 30
+
+  # HuggingFace datasets cache directory (optional)
+  cache_dir: null
+
+  # Random seed for reproducibility
+  seed: 42
+
+  # Not used for inference, but included for completeness
+  num_train_epochs: null
+  train_batch_size: null
+  eval_batch_size: null
+  gradient_accumulation_steps: null
+  num_hard_negatives: null
+  remove_nil: false

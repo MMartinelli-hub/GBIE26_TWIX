@@ -1,0 +1,29 @@
+recognizer: llm
+mode: inference
+
+llm:
+  # Provider
+  provider: lmstudio
+  model: medgemma-4b-it-mlx
+  api_key: null
+  base_url: null
+  azure_endpoint: null
+  azure_api_version: "2024-02-01"
+
+  # Data paths
+  inference_data_path: data/Annotations/Dev/json_format/dev.json
+  inference_output_path: runs/entityRecognizer/llm_lmstudio_dev_predictions.json
+  #eval_data_path: data/Annotations/Dev/json_format/dev.json
+  prompts_path: src/entityRecognizer/prompts.json
+  checkpoint_path: null
+
+  # Prompt selection
+  system_prompt_key: base
+  user_prompt_key: base
+
+  # Generation hyper-parameters
+  temperature: 0.2
+  max_new_tokens: 512
+  device: null
+  raw: false
+

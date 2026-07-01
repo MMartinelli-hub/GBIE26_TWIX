@@ -1,0 +1,8 @@
+{
+    "system_prompts": {
+        "base": "You are a biomedical entity classification assistant. Classify only the entity specified by the user and output exactly one allowed label, with no explanation or extra text."
+    },
+    "user_prompts": {
+        "base": "You are given a biomedical text containing exactly one marked entity delimited by [E1] and [/E1].\n\nYour task is to assign the marked entity to exactly one of the following labels:\n\n- anatomical location\n- animal\n- biomedical technique\n- bacteria\n- chemical\n- dietary supplement\n- DDF\n- drug\n- food\n- gene\n- human\n- microbiome\n- statistical technique\n\nIf none of these labels is appropriate, assign:\nNA\n\nInstructions:\n- Classify only the entity marked between [E1] and [/E1].\n- Use the surrounding text only as context.\n- Output exactly one label.\n- Output nothing except the chosen label.\n\nText:\n{text}\n"
+    }
+}

@@ -1,0 +1,9 @@
+prediction_folder: runs/relationExtractor/dev/parsed
+prediction_glob: "*.json"      # optional, defaults to *.json
+methods: [majority]
+
+# optional bounds; defaults are 2..all discovered files
+min_combination_size: 2
+max_combination_size: 7
+
+output_id: re_ensemble

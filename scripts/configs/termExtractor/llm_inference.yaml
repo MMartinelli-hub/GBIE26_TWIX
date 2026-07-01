@@ -1,0 +1,23 @@
+extractor: llm
+
+llm:
+  provider: lmstudio
+  model: medgemma-4b-it-mlx
+  api_key: null
+  base_url: null
+  azure_endpoint: null
+  azure_api_version: "2024-02-01"
+
+  inference_data_path: data/Annotations/Dev/json_format/dev.json
+  inference_output_path: runs/termExtractor/llm_medgemma-4b-it-mlx_dev_predictions.json
+  eval_data_path: data/Annotations/Dev/json_format/dev.json
+  prompts_path: src/termExtractor/prompts.json
+  checkpoint_path: checkpoints/termExtractor/llm_medgemma-4b-it-mlx_term_extractor_checkpoint.json
+
+  system_prompt_key: base
+  user_prompt_key: base
+
+  temperature: 0.0
+  max_new_tokens: 1024
+  device: null
+  raw: false

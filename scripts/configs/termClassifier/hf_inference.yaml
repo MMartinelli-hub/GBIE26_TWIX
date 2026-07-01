@@ -1,0 +1,24 @@
+classifier: hf
+mode: inference
+
+hf:
+  # Data
+  inference_data_path: data/Annotations/Dev/json_format/dev.json
+  inference_output_path: runs/termClassifier/BiomedNLP-BiomedElectra-large-uncased-abstract.json
+  #inference_data_path: data/Annotations/Dev/json_format/dev.json
+  #inference_output_path: runs/termClassifier/hf_biolinkbert_dev_predictions.json
+
+  # Model
+  model_path: checkpoints/termClassifier/BiomedNLP-BiomedElectra-large-uncased-abstract
+
+  # Inference/runtime settings
+  batch_size: 16
+  max_length: 512
+  seed: 42
+  num_workers: 0
+  use_amp: false
+
+  # Classification-specific sampling
+  negative_sample_multiplier: 1
+  dev_negative_sample_multiplier: 1
+  max_negative_span_words: 5

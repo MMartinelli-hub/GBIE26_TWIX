@@ -1,0 +1,17 @@
+# Entity-level ensemble configuration.
+
+method: majority  # majority, weighted, intersection, union
+prediction_paths:
+  - runs/entityRecognizer/BioLinkBERT-base_inference_predictions.json
+  - runs/entityRecognizer/BioLinkBERT-large_inference_predictions.json
+  - runs/entityRecognizer/BiomedNLP-BiomedBERT-base-uncased-abstract_inference_predictions.json
+output_path: runs/entityRecognizer/ensemble_majority_inference_predictions.json
+
+# Optional for method: weighted. Values must align with prediction_paths.
+# When omitted, all models receive equal weight.
+# weights: [0.35, 0.40, 0.25]
+
+# Optional override for majority/weighted/intersection inclusion threshold.
+# vote_threshold: 2
+
+entity_key: entities
