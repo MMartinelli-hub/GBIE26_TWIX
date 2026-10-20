@@ -1,3 +1,7 @@
+<i>Research use only. Not a medical device.
+This software was developed in the HEREDITARY project as a research prototype. It has not been assessed or certified under the EU Medical Device Regulation (EU) 2017/745. It must not be used to diagnose, treat, monitor or make any other decision about individual patients.</i>
+***
+
 # TWIX Team @ GutBrainIE 2026
 
 This repo contains the codebase developed by team TWIX for the GutBrainIE challenge at CLEF 2026. 
@@ -512,3 +516,16 @@ bash scripts/batch_entity_linker.sh
 # E. Relation extraction and ensembling
 Refer to section 9
 ```
+
+---
+
+## Contributions & Contact
+
+Feel free to open issues if you have any questions or improvements. For further inquiries, please reach out at: [martinell2@dei.unipd.it](mailto:martinell2@dei.unipd.it).
+
+
+---
+
+### Acknowledgement
+
+> Funded by the European Union under grant agreement No 101137074 (HEREDITARY). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Health and Digital Executive Agency (HaDEA). Neither the European Union nor the granting authority can be held responsible for them.
